@@ -1,0 +1,83 @@
+include:
+  - Application.yml
+  - UnitTests.yml
+
+name: ${PROJECT_NAME}
+
+configs:
+  Debug: debug
+  Release: release
+
+options:
+  deploymentTarget:
+    macOS: 14.0
+  defaultConfig: Release
+  groupSortPosition: top
+  developmentLanguage: en
+  xcodeVersion: '26.0'
+
+settings:
+  base:
+    # Signing
+    # Kept at project level so the app and the test bundle are signed by the same team without
+    # Xcode asking for one after each generation
+    DEVELOPMENT_TEAM: ${DEVELOPMENT_TEAM_ID}
+    # Deployment
+    COPY_PHASE_STRIP: NO
+    MACOSX_DEPLOYMENT_TARGET: 14.0
+    # Search Paths
+    ALWAYS_SEARCH_USER_PATHS: NO
+    # Apple Clang - Code Generation
+    GCC_NO_COMMON_BLOCKS: YES
+    # Apple Clang - Language
+    GCC_C_LANGUAGE_STANDARD: gnu11
+    # Apple Clang - Language Modules
+    CLANG_ENABLE_MODULES: YES
+    # Apple Clang - Language - Objective-C
+    CLANG_ENABLE_OBJC_ARC: YES
+    CLANG_ENABLE_OBJC_WEAK: YES
+    # Apple Clang - Warnings - All Languages
+    CLANG_WARN_BOOL_CONVERSION: YES
+    CLANG_WARN_COMMA: YES
+    CLANG_WARN_CONSTANT_CONVERSION: YES
+    CLANG_WARN_DOCUMENTATION_COMMENTS: YES
+    CLANG_WARN_EMPTY_BODY: YES
+    CLANG_WARN_ENUM_CONVERSION: YES
+    CLANG_WARN_INFINITE_RECURSION: YES
+    CLANG_WARN_INT_CONVERSION: YES
+    CLANG_WARN_STRICT_PROTOTYPES: YES
+    CLANG_WARN_UNGUARDED_AVAILABILITY: YES_AGGRESSIVE
+    CLANG_WARN_UNREACHABLE_CODE: YES
+    GCC_WARN_64_TO_32_BIT_CONVERSION: YES
+    GCC_WARN_ABOUT_RETURN_TYPE: YES_ERROR
+    GCC_WARN_UNINITIALIZED_AUTOS: YES_AGGRESSIVE
+    GCC_WARN_UNUSED_FUNCTION: YES
+    GCC_WARN_UNUSED_VARIABLE: YES
+    # Static Analysis - Generic Issues
+    CLANG_ANALYZER_NONNULL: YES
+
+  configs:
+    Debug:
+      # Architectures
+      ONLY_ACTIVE_ARCH: YES
+      # Build Options
+      DEBUG_INFORMATION_FORMAT: dwarf
+      ENABLE_TESTABILITY: YES
+      # Apple Clang - Code Generation
+      GCC_DYNAMIC_NO_PIC: NO
+      GCC_OPTIMIZATION_LEVEL: 0
+      # Apple Clang - Preprocessing
+      GCC_PREPROCESSOR_DEFINITIONS: DEBUG=1 $(inherited)
+      # Swift Compiler - Code Generation
+      SWIFT_OPTIMIZATION_LEVEL: -Onone
+      # Swift Compiler - Custom Flags
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+
+    Release:
+      # Build Options
+      DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+      # Apple Clang - Preprocessing
+      ENABLE_NS_ASSERTIONS: NO
+      # Swift Compiler - Code Generation
+      SWIFT_OPTIMIZATION_LEVEL: -O
+      SWIFT_COMPILATION_MODE: wholemodule

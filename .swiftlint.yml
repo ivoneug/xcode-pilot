@@ -1,0 +1,664 @@
+######################################################################
+# Rule whitelist
+######################################################################
+
+# Let's use a whitelist policy: only rules from following list
+# are enabled at the moment. So each rule should be enabled implicitly
+# by adding to this list.
+
+only_rules:
+
+# Closing brace with closing parenthesis should not
+# have any whitespaces in the middle.
+# Correct: find(where: { true })
+# Wrong: find(where: { true } )
+  - closing_brace
+
+# Closure parameters should be on the same line as opening brace.
+# Correct:
+#    foo(abc, 123) { x, y, z in
+#        return x * y * z
+#    }
+# Wrong:
+#    foo(abc, 123) {
+#    x, y, z in
+#        return x * y * z
+#    }
+# Wrong:
+#    foo(abc, 123) {
+#        x, y, z in return x * y * z
+#    }
+  - closure_parameter_position
+
+# Expressions using curly braces should have a single space
+# inside each brace.
+# Correct: get { return refreshable?.isRefreshEnabled ?? false }
+# Wrong: get { return refreshable?.isRefreshEnabled ?? false}
+  - closure_spacing
+
+# Colons should be next to the identifier when specifying a type.
+# Correct: let abc: Int
+# Wrong: let abc:Int
+# Wrong: let abc :Int
+# Wrong: let abc : Int
+  - colon
+
+# There should be no spaces before comma and exactly one space
+# after it (unless it is the last character on the line).
+# Correct: func abc(a: String, b: String) { }
+# Wrong: func abc(a: String ,b: String) { }
+# Wrong: func abc(a: String,b: String) { }
+  - comma
+
+# if, for, while, do statements
+# shouldn't wrap their conditionals in parentheses.
+# Correct: if condition {
+# Wrong: if (condition) {
+  - control_statement
+
+# Arguments can be omitted when matching enums
+# with associated types if they are not used.
+# Correct: case .success:
+# Wrong:   case .success(_):
+  - empty_enum_arguments
+
+# Prefer `() -> ` over `Void -> `.
+# Correct: () -> Int
+# Wrong:   Void -> Int
+# Wrong:   (Void) -> Int
+  - empty_parameters
+
+# When using trailing closures, empty parentheses
+# should be avoided after the method name.
+# Correct: [1, 2].map { $0 + 1 }
+# Wrong: [1, 2].map() { $0 + 1 }
+  - empty_parentheses_with_trailing_closure
+
+# Explicitly calling .init() should be avoided.
+# Correct: [1].flatMap(String.init)
+# Correct: [String.self].map { $0.init(1) }
+# Wrong: [1].flatMap { String.init($0) }
+  - explicit_init
+
+# Files should not span too many lines.
+  - file_length
+
+# Prefer using `.first(where:)` over `.filter { }.first` in collections.
+# Correct: myList.first(where: { $0 % 2 == 0 })
+# Wrong:   myList.filter { $0 % 2 == 0 }.first
+  - first_where
+
+# Force casts should be avoided.
+# Correct: NSNumber() as? Int
+# Wrong: NSNumber() as! Int
+  - force_cast
+
+# Force tries should be avoided.
+# Correct: func a() throws {}; do { try a() } catch {}
+# Wrong: func a() throws {}; try! a()
+  - force_try
+
+# Force unwrapping should be avoided.
+# Correct: if let url = NSURL(string: query)
+# Wrong: let url = NSURL(string: query)!
+  - force_unwrapping
+
+# Computed read-only properties should avoid using the get keyword.
+# Correct:
+#    var foo: Int {
+#        return 20
+#    }
+# Wrong:
+#    var foo: Int {
+#        get { return 20 }
+#    }
+  - implicit_getter
+
+# Files should not contain leading whitespace.
+  - leading_whitespace
+
+# Struct-scoped constants are preferred over legacy global constants.
+# Correct: CGPoint.zero
+# Wrong: CGPointZero
+  - legacy_constant
+
+# Swift constructors are preferred over legacy convenience functions.
+# Correct: CGSize(width: 10, height: 10)
+# Wrong: CGSizeMake(10, 10)
+  - legacy_constructor
+
+# Lines should not span too many characters.
+# See details below in a rule configuration section.
+  - line_length
+
+# MARK comment should be in valid format.
+# e.g. '// MARK: ...' or '// MARK: - ...'
+# Correct: // MARK: good
+# Correct: // MARK: - good
+# Wrong: //MARK: bad
+# Wrong: // MARK:bad
+# Wrong: //  MARK: bad
+  - mark
+
+# Opening braces should be preceded by a single space and on the same line
+# as the declaration.
+# Correct: func abc() {}
+# Wrong: func abc(){}
+  - opening_brace
+
+# Operators should be surrounded by a single whitespace
+# when they are being used.
+# Correct: let a = b * c
+# Wrong:   let a = b* c
+# Wrong:   let a = b *c
+# Wrong:   let a = b*c
+  - operator_usage_whitespace
+
+# Some overridden methods should always call super.
+# Correct:
+#    open override
+#    func viewDidLoad() {
+#        super.viewDidLoad()
+#        ...
+#    }
+# Wrong:
+#    open override
+#    func viewDidLoad() {
+#        ... // no super.viewDidLoad() call throughout the method
+#    }
+  - overridden_super_call
+
+# Some methods should not call super.
+# Correct:
+#    open override
+#    func loadView() {
+#        ... // no super.loadView() call throughout the method
+#    }
+# Wrong:
+#    open override
+#    func loadView() {
+#        ...
+#        super.loadView()
+#    }
+  - prohibited_super_call
+
+# Prefer `_ = foo()` over `let _ = foo()` when discarding a result
+# from a function.
+# Correct: _ = foo()
+# Wrong:   let _ = foo()
+  - redundant_discardable_let
+
+# Coalescing operator with nil as rhs is redundant.
+# Correct:
+#    var n1: Int? = nil
+#    var n2 = n1
+# Wrong:
+#    var n1: Int? = nil
+#    var n2 = n1 ?? nil
+  - redundant_nil_coalescing
+
+# Initializing an optional variable with nil is redundant.
+# Correct: var n: Int?
+# Wrong:   var n: Int? = nil
+  - redundant_optional_initialization
+
+# String enum values can be omitted when
+# they are equal to the enumcase name.
+# Correct:
+#    enum SomeEnum: String {
+#        case one
+#        case two
+#    }
+# Wrong:
+#    enum SomeEnum: String {
+#        case one = "one"
+#        case two = "two"
+#    }
+  - redundant_string_enum_value
+
+# Returning Void in a function declaration is redundant.
+# Correct: func someFunc() { ... }
+# Wrong:   func someFunc() -> Void { ... }
+  - redundant_void_return
+
+# Return arrow and return type should be separated by a single space or on a
+# separate line.
+# Correct: func abc() -> Int {}
+# Wrong: func abc()->Int {}
+  - return_arrow_whitespace
+
+# Prefer shorthand operators (+=, -=, *=, /=)
+# over doing the operation and assigning.
+# Correct: n += 42
+# Wrong:   n = n + 42
+  - shorthand_operator
+
+# Imports should be sorted.
+# Correct:
+#    import AAA
+#    import BBB
+#    import CCC
+# Wrong:
+#    import AAA
+#    import CCC
+#    import BBB
+  - sorted_imports
+
+# Else and catch should be on the same line, one space after the previous
+# declaration.
+# Correct: } else if {
+# Correct: } catch {
+# Wrong: }else if {
+# Wrong: }
+#        catch {
+  - statement_position
+
+# Cases inside a switch should always be on a newline.
+# Correct:
+#    switch self {
+#
+#        case .hue:
+#            return "hue"
+#        case .red:
+#            return "red"
+#        case .green:
+#            return "green"
+#
+#    }
+# Wrong:
+#    switch self {
+#
+#        case .hue: return "hue"
+#        case .red: return "red"
+#        case .green: return "green"
+#
+#    }
+  - switch_case_on_newline
+
+# Shorthand syntactic sugar should be used,
+# i.e. [Int] instead of Array<Int>,
+#      [String: Int] instead of Dictionary<String, Int>,
+#      Int? instead of Optional<Int>,
+#      Int! instead of ImplicitlyUnwrappedOptional<Int>
+# Correct: let n: Int? = 42
+# Wrong:   let n: Optional<Int> = 42
+  - syntactic_sugar
+
+# TODOs and FIXMEs should be avoided.
+  - todo
+
+# Files should have a single trailing newline.
+  - trailing_newline
+
+# Lines should not have trailing semicolons.
+# Correct: let a = 0
+# Wrong: let a = 0;
+  - trailing_semicolon
+
+# Type name should only contain alphanumeric characters, start with an
+# uppercase character. Max and min limits are configured in Rule
+# Configuration section.
+# Correct: class MyType {}
+# Wrong: class myType {}
+# Wrong: class _MyType {}
+  - type_name
+
+# Unused parameter in a closure should be replaced with _.
+# Correct: { _ in return x * 42 }
+# Wrong:   { n in return x * 42 }
+  - unused_closure_parameter
+
+# When the index or the item is not used,
+# `.enumerated()` can be removed.
+# Correct:
+#    for el in [1, 2, 3] {
+#        print(el)
+#    }
+# Wrong:
+#    for (_, el) in [1, 2, 3].enumerated() {
+#        print(el)
+#    }
+  - unused_enumerated
+
+# Use `if ... != nil` instead `if let _ = ...`
+# Correct:
+#    if view != nil {
+#        view.addSubview(someSubview)
+#    }
+# Wrong:
+#    if let _ = view {
+#        view.addSubview(someSubview)
+#    }
+  - unused_optional_binding
+
+# Limit vertical whitespace to a single empty line.
+# Correct:
+#    let n1 = 42
+#
+#    let n2 = 43
+# Wrong:
+#    let n1 = 42
+#
+#
+#    let n2 = 43
+  - vertical_whitespace
+
+# Prefer `-> Void` over `-> ()`.
+# Correct: func someFunc(fooParam: () -> Void) { ... }
+# Wrong:   func someFunc(fooParam: () -> ())) { ... }
+  - void_return
+
+# Multiline arguments should have their surrounding brackets in a new line
+  - multiline_arguments_brackets
+
+# Conditional statements should always return on the next line
+  - conditional_returns_on_newline
+
+# Enables enforcing custom rules (see custom rules below)
+  - custom_rules
+
+######################################################################
+# Rule configuration
+######################################################################
+
+# Closing brace
+closing_brace:
+  severity: error
+
+# Spaces aroung curly braces
+closure_spacing:
+  severity: error
+
+# Closure parameter position (on the same line with opening brace)
+closure_parameter_position:
+  severity: error
+
+# Colon
+colon:
+  severity: error
+
+# Comma
+comma:
+  severity: error
+
+# Control statement (no parentheses after control statement)
+control_statement:
+  severity: error
+
+# Don't introduce unused enum associated values
+empty_enum_arguments:
+  severity: error
+
+# Prefer `() -> ` over `Void -> `
+empty_parameters:
+  severity: error
+
+# No empty parentheses just before trailing closure
+empty_parentheses_with_trailing_closure:
+  severity: error
+
+# Use explicit init call only when necessary
+explicit_init:
+  severity: error
+
+# File length limitation
+file_length:
+  error: 400
+
+# Prefer using `.first(where:)` over `.filter { }.first` in collections
+first_where:
+  severity: error
+
+# Force casts
+force_cast:
+  severity: error
+
+# Force tries
+force_try:
+  severity: error
+
+# Force unwrapping
+force_unwrapping:
+  severity: error
+
+# Don't use get keyword for computed read-only properties
+implicit_getter:
+  severity: error
+
+# Files should not contain leading whitespace
+leading_whitespace:
+  severity: error
+
+# Maximum line length
+line_length:
+  warning: 140
+  error: 150
+
+# MARK comment format
+mark:
+  severity: error
+
+# Avoid legacy constants like CGSizeZero
+legacy_constant:
+  severity: error
+
+# Avoid legacy convenience functions like CGSizeMake
+legacy_constructor:
+  severity: error
+
+# Opening braces
+opening_brace:
+  severity: error
+
+# Whitespaces around operator usage
+operator_usage_whitespace:
+  severity: error
+
+# Required super call override
+overridden_super_call:
+  severity: error
+
+# Prohibited super call
+prohibited_super_call:
+  severity: error
+
+# Redundant discardable let
+redundant_discardable_let:
+  severity: error
+
+# Redundant nil coalescing
+redundant_nil_coalescing:
+  severity: error
+
+# No need to initialize optional with nil
+redundant_optional_initialization:
+  severity: error
+
+# Redundant explicit raw values for string enums
+redundant_string_enum_value:
+  severity: error
+
+# No need to declare returning void from functions
+redundant_void_return:
+  severity: error
+
+# Whitespaces around return arrow
+return_arrow_whitespace:
+  severity: error
+
+# Use shorthand math operators when possible
+shorthand_operator:
+  severity: error
+
+# Import statements should be sorted
+sorted_imports:
+  severity: warning
+
+# else and catch keyword positions
+statement_position:
+  severity: error
+
+# Switch cases should be on separate lines
+switch_case_on_newline:
+  severity: error
+
+# [Int] preferred to Array<Int>, ? instead Optional etc
+syntactic_sugar:
+  severity: error
+
+# TODOs and FIXMEs
+todo:
+  severity: warning
+
+# Single trailing newline
+trailing_newline:
+  severity: error
+
+# No trailing semicolons
+trailing_semicolon:
+  severity: error
+
+# Type naming rule
+type_name:
+  # Minimum limit is 0 so types can have very short names like X, Y
+  min_length:
+    warning: 0
+    error: 0
+  # Limit type name length to reasonable value so they should stay
+  # readable
+  max_length:
+    warning: 60
+    error: 70
+
+# use _ instead of unused closure parameter
+unused_closure_parameter:
+  severity: error
+
+# Use enumerated() only when you need index
+unused_enumerated:
+  severity: error
+
+# Use `if ... != nil` instead `if let _ = ...`
+unused_optional_binding:
+  severity: error
+
+# Limit vertical whitespace to a single empty line
+vertical_whitespace:
+  severity: error
+
+# Use `-> Void` instead of `-> ()` in closures
+void_return:
+  severity: error
+
+# Multiline arguments should have their surrounding brackets in a new line
+multiline_arguments_brackets:
+  severity: error
+
+conditional_returns_on_newline:
+  severity: error
+
+# ######################################################################
+# # Custom rules
+# ######################################################################
+
+custom_rules:
+
+  # Wrong:
+  #   guard
+  #      a == nil,
+  #      b == nil
+  #   else {
+  #      return
+  #   }
+  # Correct:
+  #   guard
+  #      a == nil,
+  #      b == nil
+  #   else { return }
+  guard_space_rule:
+    name: "Guard spacing after else rule"
+    regex: 'guard\v\s*([\w\s,=!\-]+)\s*else\s*\{\v\s*([\w]+)\s*\v\s*\}'
+    match_kinds:
+      - argument
+      - identifier
+      - keyword
+      - number
+      - objectliteral
+      - parameter
+      - placeholder
+      - typeidentifier
+    message: "If 'guard' has several arguments, then after 'else' if you have one line, then you do not need to wrap to new lines {}"
+    severity: error
+
+  # Wrong:
+  #    case BMP  = "bmp"
+  #    case TIFF = "tiff"
+  # Correct:
+  #    case BMP = "bmp"
+  #    case TIFF = "tiff"
+  # Known issues:
+  # Following line is linted successfully for some reason:
+  #    let blue = CGFloat(  (  hex & 0x0000FF) >> 0)  /  0xFF
+  # It looks like it has something to do with parentheses and slashes,
+  # maybe it's a side effect of other rules.
+  duplicated_spaces_custom_rule:
+    name: "Duplicated spaces rule"
+    regex: '\S\h{2,}?\S'
+    match_kinds:
+      - argument
+      - identifier
+      - keyword
+      - number
+      - objectliteral
+      - parameter
+      - placeholder
+      - typeidentifier
+    message: "There should be no multiple consecutive spaces in a line
+              (except indentation spaces in a beginning of a line)."
+    severity: error
+
+  # Wrong:
+  #    override public
+  # Correct:
+  #    public override
+  access_control_custom_rule:
+    name: "Access control rule"
+    regex: '(^|\h)\w+\h+(open|public|internal|fileprivate|private)(?!\(set\))'
+    match_kinds:
+      - attribute.builtin
+    message: "Access control modifier should precede other modifiers."
+    severity: error
+
+  # Wrong:
+  #    func abc(a:"a") { }
+  # Correct:
+  #    func abc(a: "a") { }
+  space_after_colon_custom_rule:
+    name: "Space after colon rule"
+    regex: '\w:[^\s)]'
+    match_kinds:
+      - identifier
+      - typeidentifier
+    message: "Colon should be followed by whitespace."
+    severity: error
+
+  # Wrong:
+  #    super.init()
+  #    bindPublishers()
+  # Correct:
+  #    super.init()
+  #
+  #    bindPublishers()
+  # or
+  #    super.init()
+  #  }
+  space_after_super_init_custom_rule:
+    name: "Space after super.init() rule"
+    regex: '(super\.init\([^()]*\)[ ]*\n[ ]*\w+)'
+    message: "Invocation of super.init() should be followed by whitespace."
+    severity: error
+
+excluded:
+  - Scripts/*
+  # Generated by SwiftGen
+  - XcodePilot/Resources/Generated

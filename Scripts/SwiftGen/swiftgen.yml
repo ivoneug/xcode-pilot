@@ -1,0 +1,29 @@
+xcassets:
+- inputs: ../../${PROJECT_NAME}/Resources/Assets/Images.xcassets
+  outputs:
+     output: ../../${PROJECT_NAME}/Resources/Generated/Images.swift
+     templatePath: Templates/Images.stencil
+     params:
+       enumName: Images
+       publicAccess: 1
+       noAllValues: 1
+- inputs: ../../${PROJECT_NAME}/Resources/Assets/Colors.xcassets
+  outputs:
+    templatePath: Templates/Colors.stencil
+    output: ../../${PROJECT_NAME}/Resources/Generated/Colors.swift
+    params:
+      enumName: Colors
+      publicAccess: 1
+      noAllValues: 1
+
+strings:
+- inputs:
+    - ../../${PROJECT_NAME}/Resources/Localization/en.lproj/Localizable.strings
+    - ../../${PROJECT_NAME}/Resources/Localization/en.lproj/Localizable.stringsdict
+  outputs:
+    templateName: structured-swift5
+    output: ../../${PROJECT_NAME}/Resources/Generated/Localizations.swift
+    params:
+      enumName: Localizations
+      publicAccess: 1
+      noComments: 0

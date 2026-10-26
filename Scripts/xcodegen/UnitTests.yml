@@ -1,0 +1,32 @@
+targets:
+  UnitTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: ../../UnitTests
+    dependencies:
+      - target: ${TARGET_NAME}
+
+    settings:
+      groups: [CommonTestSettings]
+      base:
+        # Packaging
+        PRODUCT_BUNDLE_IDENTIFIER: ${TARGET_BUNDLE_ID}.unit-tests
+        # Testing
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/${TARGET_NAME}.app/Contents/MacOS/${TARGET_NAME}
+
+settingGroups:
+  CommonTestSettings:
+    # Packaging
+    GENERATE_INFOPLIST_FILE: YES
+    # Deployment
+    COPY_PHASE_STRIP: NO
+    # Linking
+    BUNDLE_LOADER: $(TEST_HOST)
+    # Search Paths
+    ALWAYS_SEARCH_USER_PATHS: NO
+    # Signing
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: Apple Development
+    # Swift Compiler - Language
+    SWIFT_VERSION: 5.0

@@ -1,0 +1,75 @@
+targets:
+  ${TARGET_NAME}:
+    type: application
+    platform: macOS
+    sources:
+      - path: ../../${PROJECT_NAME}
+        excludes: [Resources/Plist/Info.plist]
+
+    scheme:
+      testTargets:
+        - UnitTests
+
+    settings:
+      groups: [CommonSettings]
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ${TARGET_BUNDLE_ID}
+
+    preBuildScripts:
+      - script: ./Scripts/swiftgen.sh
+        name: Run SwiftGen
+        basedOnDependencyAnalysis: false
+    postCompileScripts:
+      - script: ./Scripts/swiftlint.sh
+        name: Run Swiftlint
+        basedOnDependencyAnalysis: false
+
+    info:
+      path: ../../${PROJECT_NAME}/Resources/Plist/Info.plist
+      properties:
+        CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDisplayName: $(BUNDLE_DISPLAY_NAME)
+        CFBundleDevelopmentRegion: en
+        CFBundleAllowMixedLocalizations: YES
+        # Menu bar only: no Dock icon, no main menu bar
+        LSUIElement: YES
+        LSApplicationCategoryType: public.app-category.developer-tools
+        LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        NSHumanReadableCopyright: Copyright © 2026 Evgeniy Ivon. All rights reserved.
+
+settingGroups:
+  CommonSettings:
+    # Architectures
+    SDKROOT: macosx
+    # Build options
+    ENABLE_PREVIEWS: YES
+    # The app runs xcodebuild, simctl and devicectl on arbitrary projects, so it can't be sandboxed;
+    # the build phases run SwiftGen and SwiftLint on the repository itself
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+    EXCLUDED_SOURCE_FILE_NAMES: $(inherited) Resources/Plist/Info.plist
+    # Localization
+    SWIFT_EMIT_LOC_STRINGS: YES
+    # Packaging
+    BUNDLE_DISPLAY_NAME: ${APP_DISPLAY_NAME}
+    GENERATE_INFOPLIST_FILE: NO
+    INFOPLIST_FILE: ${PROJECT_NAME}/Resources/Plist/Info.plist
+    INFOPLIST_OUTPUT_FORMAT: same-as-input
+    PRODUCT_NAME: $(TARGET_NAME)
+    # Signing
+    CODE_SIGN_ENTITLEMENTS: ${PROJECT_NAME}/Resources/${PROJECT_NAME}.entitlements
+    # Xcode manages the certificate itself, so nothing has to be picked by hand after the project
+    # is regenerated
+    CODE_SIGN_IDENTITY: Apple Development
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_HARDENED_RUNTIME: YES
+    # Versioning
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 0.1.0
+    # Asset Catalog Compiler - Options
+    ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    COMBINE_HIDPI_IMAGES: YES
+    # Swift Compiler - Language
+    SWIFT_VERSION: 5.0
