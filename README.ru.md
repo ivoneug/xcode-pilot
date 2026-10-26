@@ -66,3 +66,7 @@ cd Scripts && ./generateProject.sh
 
 Слои View → ViewModel → Provider → Core Service, DI через локаторы, генерируемый проект и ресурсы
 через SwiftGen — подробности в [CLAUDE.md](CLAUDE.md).
+
+## Лицензия
+
+Xcode Pilot распространяется под [лицензией MIT](LICENSE).

@@ -67,3 +67,7 @@ Then open `XcodePilot.xcodeproj` and run the `XcodePilot` scheme. The developmen
 
 View → ViewModel → Provider → Core Service layers, DI through locators, a generated project and
 SwiftGen resources. Details are in [CLAUDE.md](CLAUDE.md) (in Russian).
+
+## License
+
+Xcode Pilot is released under the [MIT License](LICENSE).
