@@ -1,6 +1,6 @@
 ## Build generated
 */Resources/Generated/
-build/
+/build/
 DerivedData
 
 ## Various settings
