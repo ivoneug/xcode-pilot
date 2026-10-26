@@ -6,9 +6,12 @@ import Foundation
 final class BuildLog {
 
     // MARK: - Properties
+    static let lineLimit = 300_000
     private(set) var compactLines: [String] = []
     private(set) var fullLines: [String] = []
     private(set) var version: Int = .zero
+    /// Full lines appended since the last reset, the ones dropped over the limit included
+    private(set) var appendedCount: Int = .zero
 
     // MARK: - Internal methods
     func append(full: [String], compact: [String]) {
@@ -17,11 +20,12 @@ final class BuildLog {
         }
         fullLines.append(contentsOf: full)
         compactLines.append(contentsOf: compact)
-        if fullLines.count > Constants.lineLimit {
-            fullLines.removeFirst(fullLines.count - Constants.lineLimit)
+        appendedCount += full.count
+        if fullLines.count > Self.lineLimit {
+            fullLines.removeFirst(fullLines.count - Self.lineLimit)
         }
-        if compactLines.count > Constants.lineLimit {
-            compactLines.removeFirst(compactLines.count - Constants.lineLimit)
+        if compactLines.count > Self.lineLimit {
+            compactLines.removeFirst(compactLines.count - Self.lineLimit)
         }
         version += 1
     }
@@ -33,6 +37,7 @@ final class BuildLog {
     func reset() {
         fullLines.removeAll()
         compactLines.removeAll()
+        appendedCount = .zero
         version += 1
     }
 
@@ -51,8 +56,4 @@ final class BuildLog {
         }
     }
 
-}
-
-private enum Constants {
-    static let lineLimit = 300_000
 }

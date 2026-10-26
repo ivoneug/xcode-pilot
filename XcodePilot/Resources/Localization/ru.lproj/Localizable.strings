@@ -131,9 +131,20 @@
 "log.copy" = "Скопировать";
 "log.openFull" = "Открыть полный лог";
 "log.empty" = "Здесь появится лог сборки";
-"console.notRunning" = "Приложение не запущено";
 "console.empty" = "Здесь появится вывод приложения";
 "console.emptyHint" = "Запустите схему, чтобы увидеть, что печатает приложение";
+"console.filter.placeholder" = "Фильтр";
+"console.filter.help" = "Return или запятая добавляют текст как фильтр. Фильтр с минусом в начале скрывает строки, в которых он встречается";
+"console.filter.options" = "Параметры фильтра";
+"console.filter.matchAny" = "Строки с любым из фильтров";
+"console.filter.matchAll" = "Строки со всеми фильтрами";
+"console.filter.exclusionHint" = "Минус в начале фильтра скрывает подходящие строки";
+"console.filter.hideMatching" = "Скрывать подходящие строки";
+"console.filter.remove" = "Удалить фильтр";
+"console.filter.clear" = "Очистить фильтр";
+"console.filter.count" = "%1$d из %2$d";
+"console.filter.countHelp" = "Показано строк из всех, что напечатало приложение";
+"console.filter.noMatches" = "Нет строк, подходящих под фильтр";
 
 // MARK: - Archive and export
 "archive.showInOrganizer" = "Показать в Organizer";

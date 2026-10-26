@@ -13,6 +13,8 @@ struct LogTextView: NSViewRepresentable {
     let version: Int
     /// Identity of the log shown; a new one replaces the text instead of appending to it
     let source: AnyHashable
+    /// Text marked wherever it appears, matched case insensitively. Part of `source` when it changes.
+    var highlights: [String] = []
 
     // MARK: - Internal methods
     func makeCoordinator() -> Coordinator {
@@ -47,13 +49,11 @@ struct LogTextView: NSViewRepresentable {
         }
 
         let isAtBottom = scrollView.contentView.bounds.maxY >= textView.bounds.maxY - Constants.followThreshold
-        let attributes: [NSAttributedString.Key: Any] = [.font: Constants.font, .foregroundColor: Colors.textPrimary.nsColor]
         if isNewSource || lines.count < coordinator.lineCount || coordinator.lineCount == .zero {
             // Another log, a reset one or a switch between the full and the condensed one
-            storage.setAttributedString(NSAttributedString(string: lines.joined(separator: String.lineBreak), attributes: attributes))
+            storage.setAttributedString(attributed(lines.joined(separator: String.lineBreak)))
         } else if lines.count > coordinator.lineCount {
-            let appended = lines[coordinator.lineCount...].joined(separator: String.lineBreak)
-            storage.append(NSAttributedString(string: String.lineBreak + appended, attributes: attributes))
+            storage.append(attributed(String.lineBreak + lines[coordinator.lineCount...].joined(separator: String.lineBreak)))
         }
         coordinator.lineCount = lines.count
         coordinator.version = version
@@ -62,6 +62,27 @@ struct LogTextView: NSViewRepresentable {
         if isAtBottom {
             textView.scrollToEndOfDocument(nil)
         }
+    }
+
+    // MARK: - Private methods
+    private func attributed(_ text: String) -> NSAttributedString {
+        let string = NSMutableAttributedString(
+            string: text,
+            attributes: [.font: Constants.font, .foregroundColor: Colors.textPrimary.nsColor]
+        )
+        let nsText = text as NSString
+        for highlight in highlights {
+            var searchRange = NSRange(location: .zero, length: nsText.length)
+            while searchRange.length > .zero {
+                let found = nsText.range(of: highlight, options: .caseInsensitive, range: searchRange)
+                guard found.location != NSNotFound else {
+                    break
+                }
+                string.addAttribute(.backgroundColor, value: Colors.highlight.nsColor, range: found)
+                searchRange = NSRange(location: NSMaxRange(found), length: nsText.length - NSMaxRange(found))
+            }
+        }
+        return string
     }
 
 }

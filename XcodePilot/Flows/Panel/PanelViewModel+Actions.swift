@@ -137,8 +137,33 @@ extension PanelViewModel {
         NSWorkspace.shared.open(url)
     }
 
+    // MARK: - Console
+    /// Copies the lines the console shows, the filtered out ones stay behind
     func copyConsole() {
         NSPasteboard.general.copy(consoleLines.joined(separator: String.lineBreak))
+    }
+
+    func updateConsoleFilter(tokens: [ConsoleFilter.Token], draft: String) {
+        var filter = consoleFilter
+        filter.tokens = ConsoleFilter.unique(tokens)
+        filter.draft = draft
+        apply(filter)
+    }
+
+    func setConsoleFilterMode(_ mode: ConsoleFilter.Mode) {
+        var filter = consoleFilter
+        filter.mode = mode
+        apply(filter)
+    }
+
+    func clearConsoleFilter() {
+        updateConsoleFilter(tokens: [], draft: String.empty)
+    }
+
+    /// The field goes away with the text typed into it, which stays as a token instead of getting lost
+    func commitConsoleFilterDraft() {
+        let tokens = consoleFilter.tokens + (ConsoleFilter.Token(parsing: consoleFilter.draft).map { [$0] } ?? [])
+        updateConsoleFilter(tokens: tokens, draft: String.empty)
     }
 
     // MARK: - Archive
@@ -187,6 +212,15 @@ extension PanelViewModel {
 
     func quit() {
         NSApplication.shared.terminate(nil)
+    }
+
+    // MARK: - Private methods
+    /// Assigned only on a change: every assignment filters the console again
+    private func apply(_ filter: ConsoleFilter) {
+        guard filter != consoleFilter else {
+            return
+        }
+        consoleFilter = filter
     }
 
 }

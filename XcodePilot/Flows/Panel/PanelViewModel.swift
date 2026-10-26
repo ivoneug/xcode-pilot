@@ -45,6 +45,11 @@ final class PanelViewModel: IdentifiableObject {
     // MARK: - Properties
     @Published var selectedTab: Tab = .issues
     @Published var issueFilter: IssueFilter = .all
+    @Published var consoleFilter = ConsoleFilter() {
+        didSet {
+            refreshConsole()
+        }
+    }
     @Published var alertMessage: String?
     @Published private(set) var project: ProjectRef?
     @Published private(set) var recentProjects: [ProjectRef] = []
@@ -72,6 +77,7 @@ final class PanelViewModel: IdentifiableObject {
     let preferencesProvider: PreferencesProviderProtocol
     let xcodeProvider: XcodeProviderProtocol
     private var lastActivityId: UUID?
+    private var filteredConsole = FilteredLines()
     private var cancellables = Set<AnyCancellable>()
 
     // MARK: - Computed properties
@@ -113,8 +119,14 @@ final class PanelViewModel: IdentifiableObject {
         buildProvider.log.lines(compact: isCompactLog)
     }
 
+    /// What the console shows: the lines that pass the filter
     var consoleLines: [String] {
-        runProvider.console.fullLines
+        consoleFilter.isActive ? filteredConsole.lines : runProvider.console.fullLines
+    }
+
+    /// Every line the app printed, shown or not
+    var consoleLineCount: Int {
+        runProvider.console.fullLines.count
     }
 
     var configurationTitle: String {
@@ -236,7 +248,16 @@ final class PanelViewModel: IdentifiableObject {
             selectedTab = .console
         }
         self.run = run
+        refreshConsole()
+    }
+
+    private func refreshConsole() {
         consoleVersion = runProvider.console.version
+        if consoleFilter.isActive {
+            filteredConsole.update(from: runProvider.console, source: run?.id, filter: consoleFilter)
+        } else {
+            filteredConsole.reset()
+        }
     }
 
 }

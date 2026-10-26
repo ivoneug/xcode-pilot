@@ -131,9 +131,20 @@
 "log.copy" = "Copy";
 "log.openFull" = "Open Full Log";
 "log.empty" = "The build log appears here";
-"console.notRunning" = "No app is running";
 "console.empty" = "App output appears here";
 "console.emptyHint" = "Run the scheme to see what the app prints";
+"console.filter.placeholder" = "Filter";
+"console.filter.help" = "Return or a comma adds the text as a filter. A filter that starts with a minus hides the lines that contain it";
+"console.filter.options" = "Filter options";
+"console.filter.matchAny" = "Lines Matching Any Filter";
+"console.filter.matchAll" = "Lines Matching All Filters";
+"console.filter.exclusionHint" = "Start a filter with a minus to hide matching lines";
+"console.filter.hideMatching" = "Hide Matching Lines";
+"console.filter.remove" = "Remove Filter";
+"console.filter.clear" = "Clear Filter";
+"console.filter.count" = "%1$d of %2$d";
+"console.filter.countHelp" = "Lines shown out of all the app printed";
+"console.filter.noMatches" = "No lines match the filter";
 
 // MARK: - Archive and export
 "archive.showInOrganizer" = "Show in Organizer";

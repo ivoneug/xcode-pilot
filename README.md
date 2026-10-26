@@ -14,6 +14,8 @@ Everything goes through `xcodebuild`, `simctl` and `devicectl`, so Xcode.app can
 - **Build / Run / Stop / Test / Clean / Archive**. Run builds, installs and launches the app on a
   simulator (booting it if needed), a connected device or the Mac, and stays attached to it:
   `print` output goes to the Console tab.
+- **Console filter** works like Xcode's: Return turns the typed text into a token, lines with any
+  (or all) of the tokens are shown and highlighted, a token that starts with a minus hides lines.
 - **Errors and warnings right in the panel**: file and line, the code snippet from the compiler,
   an errors/warnings filter. Copy any issue (as `file:line:col: error: …`) or all of them at once,
   or open it at the right line in Xcode, VS Code, Cursor or Zed. After the build the list is
