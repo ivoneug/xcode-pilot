@@ -1,5 +1,7 @@
 # Xcode Pilot
 
+[English](README.md) · **Русский**
+
 Приложение в строке меню macOS для сборки и запуска Xcode-проектов без открытого Xcode.
 Всё делается через `xcodebuild`, `simctl` и `devicectl`, поэтому Xcode.app может быть закрыт.
 
