@@ -63,6 +63,17 @@ xcodebuild -project XcodePilot.xcodeproj -scheme XcodePilot -destination 'platfo
 Тесты хостятся в приложении; при запуске под XCTest (`AppInfo.isRunningTests`) статус-айтем,
 хоткеи и провайдеры не создаются.
 
+Релизная сборка — Developer ID, нотаризация и DMG в `build/release/` (папка в `.gitignore`,
+DerivedData — `XcodePilot-release` вне репозитория). Нужны сертификат «Developer ID Application»
+команды и профиль notarytool `xcode-pilot-notary` (`NOTARY_PROFILE` переопределяет):
+
+```bash
+./Scripts/release.sh
+```
+
+DMG прикрепляется к релизу на GitHub под именем `XcodePilot.dmg`: по этому имени на него ссылается
+лендинг (`releases/latest/download/XcodePilot.dmg`), менять его нельзя.
+
 Проверять приложение на своих проектах пользователя агенту не нужно: для экспериментов собирай
 отдельный тестовый проект во временной папке, а `xcodebuild -showdestinations` и т.п. запускай с
 `-derivedDataPath`, иначе в DerivedData пользователя появятся лишние папки.

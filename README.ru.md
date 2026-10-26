@@ -50,6 +50,16 @@ cd Scripts && ./generateProject.sh
 Затем открыть `XcodePilot.xcodeproj` и запустить схему `XcodePilot`. Команда разработчика задаётся в
 `Scripts/project.env` (`DEVELOPMENT_TEAM_ID`).
 
+### Релизная сборка
+
+`Scripts/release.sh` архивирует приложение в Release, подписывает его Developer ID команды, нотаризует,
+прикрепляет тикет и упаковывает в `build/release/XcodePilot.dmg`. Нужны сертификат «Developer ID Application»
+команды в связке ключей и профиль notarytool, который создаётся один раз:
+
+```bash
+xcrun notarytool store-credentials xcode-pilot-notary --apple-id <Apple ID> --team-id <ID команды>
+```
+
 ## Разрешения
 
 - **Универсальный доступ** — только для кнопок Organizer и Devices and Simulators: у Xcode нет

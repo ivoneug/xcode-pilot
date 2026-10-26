@@ -50,6 +50,16 @@ cd Scripts && ./generateProject.sh
 Then open `XcodePilot.xcodeproj` and run the `XcodePilot` scheme. The development team is set in
 `Scripts/project.env` (`DEVELOPMENT_TEAM_ID`).
 
+### Release build
+
+`Scripts/release.sh` archives the app in Release, signs it with the team's Developer ID, notarizes and
+staples it and packs it into `build/release/XcodePilot.dmg`. It needs the team's "Developer ID Application"
+certificate in the keychain and a notarytool keychain profile, created once:
+
+```bash
+xcrun notarytool store-credentials xcode-pilot-notary --apple-id <Apple ID> --team-id <team ID>
+```
+
 ## Permissions
 
 - **Accessibility**: only for the Organizer and Devices and Simulators buttons. Xcode has no URL
