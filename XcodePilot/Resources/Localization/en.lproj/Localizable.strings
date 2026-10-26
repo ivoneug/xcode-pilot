@@ -1,0 +1,225 @@
+// Copyright (c) 2026 Evgeniy Ivon. All rights reserved.
+
+// MARK: - Common
+"common.ok" = "OK";
+"common.cancel" = "Cancel";
+"common.back" = "Back";
+"common.openSettings" = "Open System Settings";
+
+// MARK: - Actions
+"action.build" = "Build";
+"action.run" = "Run";
+"action.test" = "Test";
+"action.clean" = "Clean Build Folder";
+"action.archive" = "Archive";
+"action.export" = "Export";
+"action.stop" = "Stop";
+
+// MARK: - Activity
+"activity.progress.build" = "Building";
+"activity.progress.test" = "Testing";
+"activity.progress.clean" = "Cleaning";
+"activity.progress.archive" = "Archiving";
+"activity.progress.export" = "Exporting";
+"activity.noun.build" = "Build";
+"activity.noun.test" = "Test";
+"activity.noun.clean" = "Clean";
+"activity.noun.archive" = "Archive";
+"activity.noun.export" = "Export";
+"activity.succeeded" = "%@ Succeeded";
+"activity.failed" = "%@ Failed";
+"activity.cancelled" = "%@ Cancelled";
+"activity.ready" = "Ready";
+"activity.readyHint" = "%@ runs, %@ builds — from anywhere";
+"activity.dismiss" = "Dismiss";
+
+// MARK: - Build phases and tasks
+"phase.resolvingPackages" = "Resolving packages";
+"phase.preparingPackages" = "Preparing packages";
+"phase.computingDependencies" = "Computing dependencies";
+"phase.creatingBuildDescription" = "Creating build description";
+"phase.gatheringProvisioningInputs" = "Gathering provisioning inputs";
+"phase.preparingBuild" = "Preparing build";
+"task.compiling" = "Compiling %@";
+"task.compilingSwiftSources" = "Compiling Swift sources";
+"task.emittingModule" = "Emitting module";
+"task.buildingModules" = "Building modules";
+"task.buildingModule" = "Building module %@";
+"task.linking" = "Linking %@";
+"task.signing" = "Signing %@";
+"task.compilingAssets" = "Compiling asset catalog";
+"task.runningScript" = "Running script ‘%@’";
+"task.processing" = "Processing %@";
+"task.copyingSwiftLibraries" = "Copying Swift libraries";
+"task.copying" = "Copying %@";
+"task.generatingDsym" = "Generating dSYM";
+"task.planningSwiftBuild" = "Planning Swift build";
+"task.processingAppIntents" = "Processing App Intents";
+"task.validating" = "Validating %@";
+
+// MARK: - Run
+"run.booting" = "Booting %@…";
+"run.installing" = "Installing on %@…";
+"run.launching" = "Launching %@…";
+"run.running" = "Running on %@";
+"run.stopped" = "Stopped";
+"run.exited" = "Exited with code %d";
+"run.installFailed" = "Couldn’t install the app on %@";
+
+// MARK: - Test
+"test.failureCategory" = "Test Failure";
+
+// MARK: - Project
+"project.choose" = "Choose a Project";
+"project.recent" = "Recent";
+"project.recentInXcode" = "Recent in Xcode";
+"project.open" = "Open…";
+"project.reveal" = "Show in Finder";
+"project.removeFromRecents" = "Remove from Recents";
+"project.notAProject" = "“%@” is not an Xcode project, workspace or Swift package.";
+"project.missing" = "The project at %@ no longer exists.";
+"project.openPanel.title" = "Choose a Project";
+"project.openPanel.prompt" = "Open";
+
+// MARK: - Panel
+"panel.tab.issues" = "Issues";
+"panel.tab.log" = "Log";
+"panel.tab.console" = "Console";
+"panel.tab.devices" = "Devices";
+"header.reload" = "Reload Schemes and Destinations";
+"header.detach" = "Open in a Window";
+"header.settings" = "Settings";
+
+// MARK: - Toolbar
+"toolbar.runHelp" = "Build and run (⌘R, %@ anywhere)";
+"toolbar.stopHelp" = "Stop (⌘., %@ anywhere)";
+"toolbar.buildHelp" = "Build (⌘B, %@ anywhere)";
+"toolbar.scheme" = "Scheme";
+"toolbar.destination" = "Run Destination";
+"toolbar.configuration" = "Build Configuration";
+"toolbar.noScheme" = "No Scheme";
+"toolbar.noDestination" = "No Destination";
+"toolbar.schemeConfiguration" = "Scheme Default";
+"toolbar.reloadDestinations" = "Reload Destinations";
+
+// MARK: - Destinations
+"destination.devices" = "Devices";
+"destination.recent" = "Recent";
+"destination.generic" = "Build Only";
+
+// MARK: - Issues
+"issues.filter.all" = "All %d";
+"issues.filter.errors" = "Errors %d";
+"issues.filter.warnings" = "Warnings %d";
+"issues.copy" = "Copy";
+"issues.copyAll" = "Copy All";
+"issues.copyMessage" = "Copy Message";
+"issues.copyLocation" = "Copy Location";
+"issues.open" = "Open in Editor";
+"issues.reveal" = "Show in Finder";
+"issues.showDetails" = "Details";
+"issues.hideDetails" = "Hide";
+"issues.nothingYet" = "Nothing built yet";
+"issues.noneSoFar" = "No issues so far";
+"issues.none" = "No issues";
+"issues.commandsFailed" = "Build commands failed";
+"issues.exitedWithCode" = "xcodebuild exited with code %d";
+
+// MARK: - Log and console
+"log.compact" = "Condensed";
+"log.compactHelp" = "Show only tasks, diagnostics and results";
+"log.copy" = "Copy";
+"log.openFull" = "Open Full Log";
+"log.empty" = "The build log appears here";
+"console.notRunning" = "No app is running";
+"console.empty" = "App output appears here";
+"console.emptyHint" = "Run the scheme to see what the app prints";
+
+// MARK: - Archive and export
+"archive.showInOrganizer" = "Show in Organizer";
+"archive.export" = "Export…";
+"archive.reveal" = "Show in Finder";
+"archive.showExport" = "Show Export in Finder";
+"archive.uploaded" = "Uploaded to App Store Connect";
+"export.title" = "Distribute App";
+"export.method" = "Method";
+"export.method.appStoreConnect" = "App Store Connect";
+"export.method.releaseTesting" = "Release Testing (Ad Hoc)";
+"export.method.enterprise" = "Enterprise";
+"export.method.debugging" = "Debugging (Development)";
+"export.method.developerId" = "Developer ID";
+"export.method.macApplication" = "Copy App";
+"export.upload" = "Upload to App Store Connect";
+"export.uploadDescription" = "The build is signed and uploaded with the accounts signed in to Xcode.";
+"export.folderDescription" = "The export is written to a new folder in %@.";
+"export.exportAction" = "Export";
+"export.uploadAction" = "Upload";
+
+// MARK: - Devices
+"devices.devices" = "Devices";
+"devices.booted" = "Booted";
+"devices.boot" = "Boot";
+"devices.shutdown" = "Shut Down";
+"devices.show" = "Show in Simulator";
+"devices.use" = "Use as Run Destination";
+"devices.openSimulator" = "Open Simulator";
+"devices.refresh" = "Refresh";
+"devices.developerModeOff" = "Developer Mode off";
+"devices.state.booted" = "Booted";
+"devices.state.connected" = "Connected";
+"devices.state.connectedUsb" = "Connected via USB";
+"devices.state.available" = "Available";
+"devices.state.unavailable" = "Unavailable";
+
+// MARK: - Xcode
+"xcode.organizer" = "Organizer";
+"xcode.devicesAndSimulators" = "Devices and Simulators";
+
+// MARK: - Menu
+"menu.project" = "Project";
+"menu.scheme" = "Scheme";
+"menu.destination" = "Run Destination";
+"menu.openInXcode" = "Open in Xcode";
+"menu.showPanel" = "Show Panel";
+"menu.quit" = "Quit Xcode Pilot";
+
+// MARK: - Settings
+"settings.title" = "Settings";
+"settings.general.title" = "General";
+"settings.general.launchAtLogin" = "Launch at login";
+"settings.general.notifications" = "Notify when an action finishes";
+"settings.general.sounds" = "Play sounds";
+"settings.general.editor" = "Open issues in";
+"settings.general.exportFolder" = "Export folder";
+"settings.general.choose" = "Choose…";
+"settings.editor.defaultApp" = "Default App";
+"settings.menuBar.title" = "Menu Bar";
+"settings.menuBar.elapsedTime" = "Show elapsed time while building";
+"settings.menuBar.errorCount" = "Show the error count after a failure";
+"settings.menuBar.successBadge" = "Keep the success badge";
+"settings.menuBar.seconds" = "%d seconds";
+"settings.menuBar.untilNextAction" = "Until the next action";
+"settings.build.title" = "Build";
+"settings.build.xcode" = "Xcode";
+"settings.build.xcodeSelect" = "As set by xcode-select";
+"settings.build.bringSimulatorToFront" = "Bring Simulator to the front on Run";
+"settings.build.allowProvisioningUpdates" = "Allow provisioning updates";
+"settings.build.skipMacroValidation" = "Skip macro and plugin validation";
+"settings.build.skipMacroValidationHelp" = "Builds packages with macros or plugins that were never trusted in Xcode";
+"settings.hotKeys.title" = "Global Shortcuts";
+"settings.hotKeys.enabled" = "Enable global shortcuts";
+"settings.hotKeys.togglePanel" = "Show or hide the panel";
+"settings.permissions.title" = "Permissions";
+"settings.permissions.accessibility" = "Accessibility";
+"settings.permissions.granted" = "Granted";
+"settings.permissions.accessibilityHint" = "Xcode has no other way to open the Organizer and Devices and Simulators windows: the app presses their items in Xcode’s Window menu.";
+
+// MARK: - Errors
+"error.commandFailed" = "%@ failed with exit code %d.";
+"error.unreadableOutput" = "Couldn’t read the output of %@.";
+"error.noRunnableProduct" = "The scheme “%@” has no app or tool to run.";
+"error.missingBundleIdentifier" = "%@ has no bundle identifier.";
+"error.accessibilityRequired" = "Allow Xcode Pilot in System Settings → Privacy & Security → Accessibility to open Xcode’s windows.";
+"error.xcodeNotFound" = "Xcode is not installed.";
+"error.menuItemNotFound" = "Couldn’t find Window → %@ in Xcode’s menu.";
+"error.launchFailed" = "Couldn’t launch %@: %@";

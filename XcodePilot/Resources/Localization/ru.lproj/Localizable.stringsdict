@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>test.passed</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@tests@</string>
+		<key>tests</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d тест пройден</string>
+			<key>few</key>
+			<string>%d теста пройдено</string>
+			<key>many</key>
+			<string>%d тестов пройдено</string>
+			<key>other</key>
+			<string>%d теста пройдено</string>
+		</dict>
+	</dict>
+	<key>test.failed</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@tests@</string>
+		<key>tests</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d упал</string>
+			<key>few</key>
+			<string>%d упало</string>
+			<key>many</key>
+			<string>%d упало</string>
+			<key>other</key>
+			<string>%d упало</string>
+		</dict>
+	</dict>
+	<key>test.skipped</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@tests@</string>
+		<key>tests</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d пропущен</string>
+			<key>few</key>
+			<string>%d пропущено</string>
+			<key>many</key>
+			<string>%d пропущено</string>
+			<key>other</key>
+			<string>%d пропущено</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

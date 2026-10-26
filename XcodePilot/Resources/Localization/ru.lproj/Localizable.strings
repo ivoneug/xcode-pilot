@@ -1,0 +1,225 @@
+// Copyright (c) 2026 Evgeniy Ivon. All rights reserved.
+
+// MARK: - Common
+"common.ok" = "OK";
+"common.cancel" = "Отменить";
+"common.back" = "Назад";
+"common.openSettings" = "Открыть Системные настройки";
+
+// MARK: - Actions
+"action.build" = "Собрать";
+"action.run" = "Запустить";
+"action.test" = "Тесты";
+"action.clean" = "Очистить сборку";
+"action.archive" = "Архивировать";
+"action.export" = "Экспорт";
+"action.stop" = "Остановить";
+
+// MARK: - Activity
+"activity.progress.build" = "Сборка";
+"activity.progress.test" = "Тестирование";
+"activity.progress.clean" = "Очистка";
+"activity.progress.archive" = "Архивация";
+"activity.progress.export" = "Экспорт";
+"activity.noun.build" = "Сборка";
+"activity.noun.test" = "Тесты";
+"activity.noun.clean" = "Очистка";
+"activity.noun.archive" = "Архивация";
+"activity.noun.export" = "Экспорт";
+"activity.succeeded" = "%@: успешно";
+"activity.failed" = "%@: ошибка";
+"activity.cancelled" = "%@: отменено";
+"activity.ready" = "Готово";
+"activity.readyHint" = "%@ — запуск, %@ — сборка, из любого приложения";
+"activity.dismiss" = "Скрыть";
+
+// MARK: - Build phases and tasks
+"phase.resolvingPackages" = "Загрузка пакетов";
+"phase.preparingPackages" = "Подготовка пакетов";
+"phase.computingDependencies" = "Расчёт зависимостей";
+"phase.creatingBuildDescription" = "Подготовка описания сборки";
+"phase.gatheringProvisioningInputs" = "Сбор данных подписи";
+"phase.preparingBuild" = "Подготовка сборки";
+"task.compiling" = "Компиляция %@";
+"task.compilingSwiftSources" = "Компиляция исходников Swift";
+"task.emittingModule" = "Сборка модуля";
+"task.buildingModules" = "Сборка модулей";
+"task.buildingModule" = "Сборка модуля %@";
+"task.linking" = "Линковка %@";
+"task.signing" = "Подпись %@";
+"task.compilingAssets" = "Компиляция каталога ресурсов";
+"task.runningScript" = "Скрипт «%@»";
+"task.processing" = "Обработка %@";
+"task.copyingSwiftLibraries" = "Копирование библиотек Swift";
+"task.copying" = "Копирование %@";
+"task.generatingDsym" = "Генерация dSYM";
+"task.planningSwiftBuild" = "Планирование сборки Swift";
+"task.processingAppIntents" = "Обработка App Intents";
+"task.validating" = "Проверка %@";
+
+// MARK: - Run
+"run.booting" = "Загрузка %@…";
+"run.installing" = "Установка на %@…";
+"run.launching" = "Запуск %@…";
+"run.running" = "Запущено на %@";
+"run.stopped" = "Остановлено";
+"run.exited" = "Завершилось с кодом %d";
+"run.installFailed" = "Не удалось установить приложение на %@";
+
+// MARK: - Test
+"test.failureCategory" = "Ошибка теста";
+
+// MARK: - Project
+"project.choose" = "Выберите проект";
+"project.recent" = "Недавние";
+"project.recentInXcode" = "Недавние в Xcode";
+"project.open" = "Открыть…";
+"project.reveal" = "Показать в Finder";
+"project.removeFromRecents" = "Убрать из недавних";
+"project.notAProject" = "«%@» — не проект Xcode, не workspace и не Swift-пакет.";
+"project.missing" = "Проекта %@ больше нет.";
+"project.openPanel.title" = "Выберите проект";
+"project.openPanel.prompt" = "Открыть";
+
+// MARK: - Panel
+"panel.tab.issues" = "Ошибки";
+"panel.tab.log" = "Лог";
+"panel.tab.console" = "Консоль";
+"panel.tab.devices" = "Устройства";
+"header.reload" = "Перечитать схемы и устройства";
+"header.detach" = "Открыть в окне";
+"header.settings" = "Настройки";
+
+// MARK: - Toolbar
+"toolbar.runHelp" = "Собрать и запустить (⌘R, %@ из любого приложения)";
+"toolbar.stopHelp" = "Остановить (⌘., %@ из любого приложения)";
+"toolbar.buildHelp" = "Собрать (⌘B, %@ из любого приложения)";
+"toolbar.scheme" = "Схема";
+"toolbar.destination" = "Устройство запуска";
+"toolbar.configuration" = "Конфигурация сборки";
+"toolbar.noScheme" = "Нет схемы";
+"toolbar.noDestination" = "Нет устройства";
+"toolbar.schemeConfiguration" = "Из схемы";
+"toolbar.reloadDestinations" = "Обновить список устройств";
+
+// MARK: - Destinations
+"destination.devices" = "Устройства";
+"destination.recent" = "Недавние";
+"destination.generic" = "Только сборка";
+
+// MARK: - Issues
+"issues.filter.all" = "Все %d";
+"issues.filter.errors" = "Ошибки %d";
+"issues.filter.warnings" = "Предупреждения %d";
+"issues.copy" = "Скопировать";
+"issues.copyAll" = "Скопировать все";
+"issues.copyMessage" = "Скопировать текст";
+"issues.copyLocation" = "Скопировать путь";
+"issues.open" = "Открыть в редакторе";
+"issues.reveal" = "Показать в Finder";
+"issues.showDetails" = "Подробнее";
+"issues.hideDetails" = "Скрыть";
+"issues.nothingYet" = "Ещё ничего не собиралось";
+"issues.noneSoFar" = "Пока без ошибок";
+"issues.none" = "Ошибок нет";
+"issues.commandsFailed" = "Команды сборки завершились с ошибкой";
+"issues.exitedWithCode" = "xcodebuild завершился с кодом %d";
+
+// MARK: - Log and console
+"log.compact" = "Кратко";
+"log.compactHelp" = "Показывать только задачи, диагностику и результат";
+"log.copy" = "Скопировать";
+"log.openFull" = "Открыть полный лог";
+"log.empty" = "Здесь появится лог сборки";
+"console.notRunning" = "Приложение не запущено";
+"console.empty" = "Здесь появится вывод приложения";
+"console.emptyHint" = "Запустите схему, чтобы увидеть, что печатает приложение";
+
+// MARK: - Archive and export
+"archive.showInOrganizer" = "Показать в Organizer";
+"archive.export" = "Экспорт…";
+"archive.reveal" = "Показать в Finder";
+"archive.showExport" = "Показать экспорт в Finder";
+"archive.uploaded" = "Загружено в App Store Connect";
+"export.title" = "Распространение";
+"export.method" = "Способ";
+"export.method.appStoreConnect" = "App Store Connect";
+"export.method.releaseTesting" = "Release Testing (Ad Hoc)";
+"export.method.enterprise" = "Enterprise";
+"export.method.debugging" = "Debugging (Development)";
+"export.method.developerId" = "Developer ID";
+"export.method.macApplication" = "Копия приложения";
+"export.upload" = "Загрузить в App Store Connect";
+"export.uploadDescription" = "Сборка подписывается и загружается от аккаунтов, добавленных в Xcode.";
+"export.folderDescription" = "Экспорт сохраняется в новую папку в %@.";
+"export.exportAction" = "Экспортировать";
+"export.uploadAction" = "Загрузить";
+
+// MARK: - Devices
+"devices.devices" = "Устройства";
+"devices.booted" = "Запущенные";
+"devices.boot" = "Запустить";
+"devices.shutdown" = "Выключить";
+"devices.show" = "Показать в Simulator";
+"devices.use" = "Выбрать для запуска";
+"devices.openSimulator" = "Открыть Simulator";
+"devices.refresh" = "Обновить";
+"devices.developerModeOff" = "Режим разработчика выключен";
+"devices.state.booted" = "Запущен";
+"devices.state.connected" = "Подключено";
+"devices.state.connectedUsb" = "Подключено по USB";
+"devices.state.available" = "Доступно";
+"devices.state.unavailable" = "Недоступно";
+
+// MARK: - Xcode
+"xcode.organizer" = "Organizer";
+"xcode.devicesAndSimulators" = "Devices and Simulators";
+
+// MARK: - Menu
+"menu.project" = "Проект";
+"menu.scheme" = "Схема";
+"menu.destination" = "Устройство запуска";
+"menu.openInXcode" = "Открыть в Xcode";
+"menu.showPanel" = "Показать панель";
+"menu.quit" = "Выйти из Xcode Pilot";
+
+// MARK: - Settings
+"settings.title" = "Настройки";
+"settings.general.title" = "Основные";
+"settings.general.launchAtLogin" = "Запускать при входе";
+"settings.general.notifications" = "Уведомлять о завершении";
+"settings.general.sounds" = "Звуки";
+"settings.general.editor" = "Открывать ошибки в";
+"settings.general.exportFolder" = "Папка экспорта";
+"settings.general.choose" = "Выбрать…";
+"settings.editor.defaultApp" = "Приложение по умолчанию";
+"settings.menuBar.title" = "Строка меню";
+"settings.menuBar.elapsedTime" = "Показывать время сборки";
+"settings.menuBar.errorCount" = "Показывать число ошибок после неудачи";
+"settings.menuBar.successBadge" = "Показывать значок успеха";
+"settings.menuBar.seconds" = "%d с";
+"settings.menuBar.untilNextAction" = "До следующего действия";
+"settings.build.title" = "Сборка";
+"settings.build.xcode" = "Xcode";
+"settings.build.xcodeSelect" = "Как в xcode-select";
+"settings.build.bringSimulatorToFront" = "Показывать Simulator при запуске";
+"settings.build.allowProvisioningUpdates" = "Разрешить обновление профилей";
+"settings.build.skipMacroValidation" = "Не проверять макросы и плагины";
+"settings.build.skipMacroValidationHelp" = "Собирает пакеты с макросами и плагинами, которым не доверяли в Xcode";
+"settings.hotKeys.title" = "Глобальные сочетания клавиш";
+"settings.hotKeys.enabled" = "Включить глобальные сочетания";
+"settings.hotKeys.togglePanel" = "Показать или скрыть панель";
+"settings.permissions.title" = "Разрешения";
+"settings.permissions.accessibility" = "Универсальный доступ";
+"settings.permissions.granted" = "Есть";
+"settings.permissions.accessibilityHint" = "Иначе Xcode не даёт открыть окна Organizer и Devices and Simulators: приложение нажимает их пункты в меню Window.";
+
+// MARK: - Errors
+"error.commandFailed" = "%@ завершилась с кодом %d.";
+"error.unreadableOutput" = "Не удалось прочитать вывод %@.";
+"error.noRunnableProduct" = "В схеме «%@» нет приложения или утилиты для запуска.";
+"error.missingBundleIdentifier" = "У %@ нет bundle identifier.";
+"error.accessibilityRequired" = "Разрешите Xcode Pilot в Системных настройках → Конфиденциальность и безопасность → Универсальный доступ, чтобы открывать окна Xcode.";
+"error.xcodeNotFound" = "Xcode не установлен.";
+"error.menuItemNotFound" = "В меню Xcode не найден пункт Window → %@.";
+"error.launchFailed" = "Не удалось запустить %@: %@";
