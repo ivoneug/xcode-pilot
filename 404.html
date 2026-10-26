@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Xcode Pilot</title>
+		<meta name="robots" content="noindex" />
+		<link rel="canonical" href="https://ivon.dev/pilot/" />
+		<script>
+			// pilot.ivon.dev is a short address of the landing on ivon.dev: /ru/... goes to the Russian page,
+			// the bare domain follows the browser language, anything else lands on the English page.
+			(function () {
+				var path = location.pathname.replace(/^\/+/, '');
+				var wantsRussian = /^ru(\/|$)/i.test(path) || (path === '' && /^ru\b/i.test(navigator.language || ''));
+				location.replace('https://ivon.dev/pilot/' + (wantsRussian ? 'ru/' : '') + location.hash);
+			})();
+		</script>
+		<noscript><meta http-equiv="refresh" content="0; url=https://ivon.dev/pilot/" /></noscript>
+	</head>
+	<body>
+		<p>Xcode Pilot has moved to <a href="https://ivon.dev/pilot/">ivon.dev/pilot</a>.</p>
+	</body>
+</html>
