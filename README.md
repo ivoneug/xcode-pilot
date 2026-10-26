@@ -5,6 +5,8 @@
 A macOS menu bar app for building and running Xcode projects without keeping Xcode open.
 Everything goes through `xcodebuild`, `simctl` and `devicectl`, so Xcode.app can stay closed.
 
+Screenshots and a tour of the panel: [pilot.ivon.dev](https://pilot.ivon.dev).
+
 ## Features
 
 - **Project picker**: `.xcodeproj`, `.xcworkspace` or a Swift package (a folder with `Package.swift`).

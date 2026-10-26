@@ -5,6 +5,8 @@
 Приложение в строке меню macOS для сборки и запуска Xcode-проектов без открытого Xcode.
 Всё делается через `xcodebuild`, `simctl` и `devicectl`, поэтому Xcode.app может быть закрыт.
 
+Скриншоты и обзор панели: [pilot.ivon.dev](https://pilot.ivon.dev/ru/).
+
 ## Что умеет
 
 - **Выбор проекта**: `.xcodeproj`, `.xcworkspace` или Swift-пакет (папка с `Package.swift`).
